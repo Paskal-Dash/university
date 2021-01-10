@@ -1,0 +1,68 @@
+
+#1
+sc <- c("M" = sum(titanic_train$Sex == 'male'), "W" = sum(titanic_train$Sex == 'female'))
+sc
+
+#2
+hist(titanic_train$Pclass, main = "Passagers Class")
+hist(titanic_train$Pclass[titanic_train$Sex == 'male'], main = "Male Passagers Class")
+hist(titanic_train$Pclass[titanic_train$Sex == 'female'], main = "Female Passagers Class")
+sum(titanic_train$Pclass[titanic_train$Sex == 'male'] == 2)
+
+#3
+round(median(titanic_train$Fare), digits = 2)
+round(sd(titanic_train$Fare), digits = 2)
+
+#4
+no_na_age <- titanic_train[!is.na(titanic_train$Age),]
+first_group <- no_na_age$Survived[no_na_age$Age < 30]
+second_group <- no_na_age$Survived[no_na_age$Age > 60]
+cat('Statement "People under 30 survived more often" is', sum(first_group) > sum(second_group))
+cat('Under 30:', sum(first_group)/length(first_group), 'After 60:', sum(second_group)/length(second_group))
+
+#5
+male <- titanic_train$Survived[titanic_train$Sex == 'male']
+female <- titanic_train$Survived[titanic_train$Sex =='female']
+cat('Statement "Female survived more often male" is', sum(female) > sum(male))
+cat('Male:', sum(male)/length(male), 'Female:', sum(female)/length(female))
+
+#6
+male_names <- table(sapply(titanic_train$Name, function(Name){strsplit(Name, ' ')[[1]][3]}))
+cat('Most popular name is', names(male_names[male_names == max(male_names)]))
+
+#7
+plot(titanic_train$Fare[titanic_train$Survived == 0 & (titanic_train$Fare >= 0 & titanic_train$Fare <= 50)], pch=20, col="red3", main = "0$ - 50$ (dead)")
+plot(titanic_train$Fare[titanic_train$Survived == 0 & (titanic_train$Fare >= 50 & titanic_train$Fare <= 100)], pch=20, col="red3", main = "50$ - 100$ (dead)")
+plot(titanic_train$Fare[titanic_train$Survived == 0 & (titanic_train$Fare >= 100 & titanic_train$Fare <= 500)], pch=20, col="red3", main = "100$ - 500$ (dead)")
+plot(titanic_train$Fare[titanic_train$Survived == 1 & (titanic_train$Fare >= 0 & titanic_train$Fare <= 50)], pch=20, col="red3", main = "0$ - 50$ (survived)")
+plot(titanic_train$Fare[titanic_train$Survived == 1 & (titanic_train$Fare >= 50 & titanic_train$Fare <= 100)], pch=20, col="red3", main = "50$ - 100$ (survived)")
+plot(titanic_train$Fare[titanic_train$Survived == 1 & (titanic_train$Fare >= 100 & titanic_train$Fare <= 500)], pch=20, col="red3", main = "100$ - 500$ (survived)")
+no_na_ages <- titanic_train[!is.na(titanic_train$Age),]
+dmean <- mean(no_na_ages$Age[no_na_ages$Survived == 0])
+amean <- mean(no_na_ages$Age[no_na_ages$Survived == 1])
+cat('Statement "The average age of the dead is higher" is', dmean > amean)
+
+#8
+no_na_ages <- titanic_train[!is.na(titanic_train$Age),]
+mean_age <- function (gender) {
+    sapply(1:3, function(cl) {
+        mean(no_na_ages$Age[no_na_ages$Pclass == cl & no_na_ages$Sex == gender])
+    })
+}
+plot(x = 1:3, y = mean_age('male'), type = 'b', xlab = 'Class', ylab = 'Mean age', main = 'Men')
+plot(x = 1:3, y = mean_age('female'), type = 'b', xlab = 'Class', ylab = 'Mean age', main = 'Women')
+
+#9
+seaports <- c('Cherbourg' = 'C', 'Southampton' = 'S', 'Queenstown' = 'Q')
+passeng_coef <- function(seaport){
+    sex <- titanic_train$Sex[titanic_train$Embarked == seaport]
+    sum(sex == 'female')/length(sex)
+}
+coef <- sapply(seaports, passeng_coef)
+cat('Most ratio was in', names(coef[coef == max(coef)]), 'seaport')
+
+#10
+sib <- aggregate(titanic_train$Survived, by = list(titanic_train$SibSp), mean)
+plot(sib, type = 'o', pch=20,  xlab = 'Siblings count', ylab = 'Chance to survive')
+parch <- aggregate(titanic_train$Survived, by = list(titanic_train$Parch), mean)
+plot(parch, type = 'o', pch=20,  xlab = 'Parching count', ylab = 'Chance to survive')
