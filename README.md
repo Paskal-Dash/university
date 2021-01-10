@@ -1,6 +1,6 @@
 ## 4 курс 1 семестр МКН (Б8117-02.03.01)
 ### Большие данные. Шевченко Юрий Андреевич
-* Анимация из JSON-файла 
+* Анимация из JSON-файла [[**Python**]](https://github.com/Paskal-Dash/university/blob/master/4.2/BigData/Lab%201/lab1.py)
 ## 3 курс 2 семестр МКН (Б8117-02.03.01)
 ### Криптография. Селезнев Тим Эдуардович
 * Алгоритм шифрования RSA [[**Python**]](https://github.com/Paskal-Dash/university/blob/master/3.2/Криптография/Лаба%201/RSA.py) [[**DOCX**]](https://github.com/Paskal-Dash/university/blob/master/3.2/Криптография/RSA.docx)
