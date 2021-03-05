@@ -1,16 +1,90 @@
-#Quest 1
+#Option #10
 
-def Caesar_Encr(message, key):      #Caesar Ecryption
-    return ''.join([chr((ord(symb) - ord('a') + key) % (ord('z') - ord('a') + 1) + ord('a')) for symb in message])
+N, k, alpha, n, A = 10, 10, 1/6, 4, 20
 
-def Caesar_Dencr(message, key):     #Caesar Decryption
-    return ''.join([chr((ord(symb) - ord('a') - key) % (ord('z') - ord('a') + 1) + ord('a')) for symb in message])
+X = [N * pow(10, 4)]
+Z, u = [], []
 
-def Vigener_Encr(message, key):     #Vigener Ecryption
-    return ''.join([chr((ord(message[i]) - 2 * ord('a') + ord(key[i % len(key)])) % (ord('z') - ord('a') + 1) + ord('a')) for i in range(len(message))]).upper()
+q = (3 + N * 0.1) * 0.01
+c = (10 + N * 0.3) * 0.01
+cwave = c / q**(1 / alpha)
 
-def Vigener_Dencr(message, key):    #Vigener Decryption
-    return ''.join([chr((ord(message[i])  + (ord('z') - ord('a') + 1) - ord(key[i % len(key)])) % (ord('z') - ord('a') + 1) + ord('a')) for i in range(len(message))]).upper()
+beta = alpha / (1 - alpha)
 
-#Quest 2
 
+#Ex. 1 & 2 
+
+def bellman():
+
+    for i in range(1, n + 1):
+
+        count = 0
+        for j in range(0, n - i + 1): count += cwave**(j * beta)
+
+        Z.append(q**(n - k) * (X[i - 1] * count**(1 / beta))**alpha)
+
+    return
+
+
+def optional_solution():
+    
+    for i in range(1, n + 1):
+        
+        count = 0
+        for j in range(0, i + 1): count += cwave**(j * beta)
+
+        u.append(X[i - 1] / count)
+        X.append(c*(X[i - 1] - u[-1]))
+
+    return
+
+optional_solution()
+bellman()
+
+print("1. Оптимальное решение u* = {};\n2. Оптимальная траектория X* = {};\n3. Оптимальное значение целевой функции на всем интервале в n = {} периодов: F*(x0) = {}".format(u, X, str(n), str(A*q*Z[0])))
+print("4. Функция Беллмана от 1 по n = {}: Z* = {}".format(str(n), Z))
+
+
+#Ex. 3 
+
+def next_bellman():
+
+    new_c = c
+    new_cwave = cwave
+    for i in range(1, n + 1):
+
+        if i == 2:
+            new_c = (18 + 0.3 * N) * 0.01
+            new_cwave = new_c / q**(1 / alpha)
+
+        count = 0
+        for j in range(0, n - i + 1): count += new_cwave**(j * beta)
+
+        Z.append(q**(n - k) * (X[i - 1] * count**(1 / beta))**alpha)
+
+    return
+
+
+def next_optional_solution():
+
+    new_c = c
+    new_cwave = cwave
+    for i in range(1, n + 1):
+
+        if i == 2:
+            new_c = (18 + 0.3 * N) * 0.01
+            new_cwave = new_c / q**(1 / alpha)
+        
+        count = 0
+        for j in range(0, i + 1): count += new_cwave**(j * beta)
+
+        u.append(X[i - 1] / count)
+        X.append(new_c*(X[i - 1] - u[-1]))
+
+    return
+
+#next_optional_solution()
+#next_bellman()
+
+#print("1. Оптимальное решение u* = {};\n2. Оптимальная траектория X* = {};\n3. Оптимальное значение целевой функции на всем интервале в n = {} периодов: F*(x0) = {}".format(u, X, str(n), str(A*q*Z[0])))
+#print("4. Функция Беллмана от 1 по n = {}: Z* = {}".format(str(n), Z))
