@@ -3,8 +3,9 @@
 * Анимация из JSON-файла [[**Python**]](https://github.com/Paskal-Dash/university/blob/master/4.1/BigData/Lab%201/lab1.py)
 * Работа с базой данных REGIN [[**Pandas**]](https://github.com/Paskal-Dash/university/blob/master/4.1/BigData/Lab%202/lab2.ipynb)
 * Работа с базой данных "Titanic_train" [[**R**]](https://github.com/Paskal-Dash/university/blob/master/4.1/BigData/Lab%203/R.txt) [[**DOCX**]](https://github.com/Paskal-Dash/university/blob/master/4.1/BigData/Lab%203/Отчет.%203%20лаба%20Михайлов%20Б8117-02.03.01.docx)
-### Задачи оптимального управления. Хан Игорь Сергеевич [[**TEORY1**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/L1_-_1.pdf) [[**TEORY2**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/L2_-_1.pdf)
-* Задача 1 "Вырубка леса" [[**Python**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/lab1.py) [[**TASKS**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/Tasks.pdf) 
+### Задачи оптимального управления. Хан Игорь Сергеевич [[**TEORY1**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/L1_-_1.pdf) [[**TEORY2**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/L2_-_1.pdf) [[BOOK]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/Kremer.pdf)
+* Задача 1 "Вырубка леса" [[**Python**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/lab1.py) [[**TASK-1**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/Tasks.pdf)
+* Задача 4 "Задача о замене оборудования" [[**Python**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/lab1.py) [[**TASK-4**]](https://github.com/Paskal-Dash/university/blob/master/4.1/OptimalControlProblems/Tasks.pdf)
 ## 3 курс 2 семестр МКН (Б8117-02.03.01)
 ### Криптография. Селезнев Тим Эдуардович
 * Алгоритм шифрования RSA [[**Python**]](https://github.com/Paskal-Dash/university/blob/master/3.2/Криптография/Лаба%201/RSA.py) [[**DOCX**]](https://github.com/Paskal-Dash/university/blob/master/3.2/Криптография/RSA.docx)
